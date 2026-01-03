@@ -1,0 +1,24 @@
+{
+    "FileVersion": 3,
+    "Version": 1,
+    "VersionName": "1.0.0",
+    "FriendlyName": "ICE -Inline Code Editor",
+    "Description": "Inline Code Editor for Unreal Engine",
+    "Category": "Editor",
+    "CreatedBy": "yureka",
+    "CreatedByURL": "https://yureka.games/",
+    "DocsURL": "https://yureka.games/",
+    "MarketplaceURL": "",
+    "SupportURL": "",
+    "CanContainContent": true,
+    "IsBetaVersion": true,
+    "IsExperimentalVersion": false,
+    "Installed": false,
+    "Modules": [
+        {
+            "Name": "InlineCodeEditor",
+            "Type": "Editor",
+            "LoadingPhase": "PostEngineInit"
+        }
+    ]
+}
