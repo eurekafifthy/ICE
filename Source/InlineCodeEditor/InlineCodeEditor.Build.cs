@@ -1,4 +1,4 @@
-// Copyright InlineEditor Team. All Rights Reserved.
+// Copyright Yureka. All Rights Reserved.
 
 using UnrealBuildTool;
 

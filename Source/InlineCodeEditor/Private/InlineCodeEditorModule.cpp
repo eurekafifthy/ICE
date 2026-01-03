@@ -1,10 +1,11 @@
-// Copyright InlineEditor Team. All Rights Reserved.
+// Copyright Yureka. All Rights Reserved.
 
 #include "InlineCodeEditorModule.h"
-#include "SCodeEditorTab.h"
+#include "SIDEPanel.h"
 
 #include "Framework/Docking/TabManager.h"
 #include "LevelEditor.h"
+#include "Misc/Paths.h"
 #include "ToolMenus.h"
 #include "Widgets/Docking/SDockTab.h"
 #include "WorkspaceMenuStructure.h"
@@ -20,8 +21,9 @@ void FInlineCodeEditorModule::StartupModule() {
 
   RegisterTabSpawner();
 
-  UE_LOG(LogTemp, Log,
-         TEXT("InlineCodeEditor: Module loaded - Monaco Editor ready"));
+  UE_LOG(
+      LogTemp, Log,
+      TEXT("InlineCodeEditor: ICE IDE loaded - File Tree + Code Editor ready"));
 }
 
 void FInlineCodeEditorModule::ShutdownModule() {
@@ -35,9 +37,9 @@ void FInlineCodeEditorModule::RegisterTabSpawner() {
           CodeEditorTabName,
           FOnSpawnTab::CreateRaw(this,
                                  &FInlineCodeEditorModule::SpawnCodeEditorTab))
-      .SetDisplayName(LOCTEXT("CodeEditorTabTitle", "Code Editor"))
-      .SetTooltipText(
-          LOCTEXT("CodeEditorTabTooltip", "Inline Monaco code editor"))
+      .SetDisplayName(LOCTEXT("CodeEditorTabTitle", "ICE - Inline Code Editor"))
+      .SetTooltipText(LOCTEXT("CodeEditorTabTooltip",
+                              "Inline Code Editor IDE with File Explorer"))
       .SetGroup(
           WorkspaceMenu::GetMenuStructure().GetDeveloperToolsMiscCategory())
       .SetIcon(FSlateIcon(FAppStyle::GetAppStyleSetName(),
@@ -50,15 +52,14 @@ void FInlineCodeEditorModule::UnregisterTabSpawner() {
 
 TSharedRef<SDockTab>
 FInlineCodeEditorModule::SpawnCodeEditorTab(const FSpawnTabArgs &SpawnTabArgs) {
-  TSharedRef<SCodeEditorTab> EditorWidget = SNew(SCodeEditorTab);
+  // Create the full IDE panel with file tree and code editor
+  TSharedRef<SIDEPanel> IDEPanel =
+      SNew(SIDEPanel).DefaultRootPath(FPaths::ProjectDir());
 
   TSharedRef<SDockTab> DockTab =
       SNew(SDockTab)
           .TabRole(ETabRole::NomadTab)
-          .Label(LOCTEXT("CodeEditorTabLabel", "Code Editor"))[EditorWidget];
-
-  // Pass tab reference so widget can check IsForeground()
-  EditorWidget->SetParentTab(DockTab);
+          .Label(LOCTEXT("CodeEditorTabLabel", "ICE"))[IDEPanel];
 
   return DockTab;
 }

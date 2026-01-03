@@ -1,4 +1,4 @@
-// Copyright InlineEditor Team. All Rights Reserved.
+// Copyright Yureka. All Rights Reserved.
 
 #include "SCodeEditorTab.h"
 #include "Framework/Application/SlateApplication.h"
@@ -12,16 +12,15 @@
 #include "Widgets/Layout/SBox.h"
 #include "Widgets/Text/STextBlock.h"
 
-
 #define LOCTEXT_NAMESPACE "SCodeEditorTab"
 
 namespace EditorColors {
 const FLinearColor ToolbarBackground =
-    FLinearColor(0.176f, 0.176f, 0.188f); // #2D2D30
+    FLinearColor::FromSRGBColor(FColor::FromHex("1E1E1EFF")); // VSCode dark
 const FLinearColor StatusBarBackground =
-    FLinearColor(0.0f, 0.478f, 0.8f); // #007ACC
+    FLinearColor::FromSRGBColor(FColor::FromHex("007ACCFF")); // Blue bar
 const FLinearColor EditorBackground =
-    FLinearColor(0.118f, 0.118f, 0.118f); // #1E1E1E
+    FLinearColor::FromSRGBColor(FColor::FromHex("1E1E1EFF")); // VSCode dark
 } // namespace EditorColors
 
 void SCodeEditorTab::Construct(const FArguments &InArgs) {

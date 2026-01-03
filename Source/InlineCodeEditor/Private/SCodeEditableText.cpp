@@ -1,4 +1,4 @@
-// Copyright InlineEditor Team. All Rights Reserved.
+// Copyright Yureka. All Rights Reserved.
 
 #include "SCodeEditableText.h"
 #include "FCppSyntaxHighlighter.h"
@@ -20,10 +20,10 @@ namespace CodeEditorStyle {
 constexpr float FoldGutterWidth = 16.0f;
 
 const FLinearColor BackgroundColor =
-    FLinearColor::FromSRGBColor(FColor::FromHex("1E1E1EFF"));
+    FLinearColor::FromSRGBColor(FColor::FromHex("1E1E1EFF")); // VSCode dark
 
 const FLinearColor GutterColor =
-    FLinearColor::FromSRGBColor(FColor::FromHex("1E1E1EFF"));
+    FLinearColor::FromSRGBColor(FColor::FromHex("1E1E1EFF")); // VSCode dark
 
 const FLinearColor FoldIndicatorColor =
     FLinearColor::FromSRGBColor(FColor::FromHex("808080FF"));
